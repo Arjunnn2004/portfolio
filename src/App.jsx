@@ -15,7 +15,7 @@ function App() {
   }, [values.length]);
 
   return (
-    <div className="flex flex-col gap-10 md:flex-col lg:flex-row ">
+    <div className="flex flex-col justify-between gap-10 md:flex-col lg:flex-row ">
       <div className="flex flex-col flex-wrap">
         <h1 className="text-7xl font-extrabold ">Arjun Chawla</h1>
         <br />
