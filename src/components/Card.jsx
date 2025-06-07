@@ -5,7 +5,7 @@ function Card() {
   return (
     <span>
           <article>
-            <figure>
+            <figure className=''>
               <img
                 id="man"
                 src="https://assets.codepen.io/605876/person.png"
