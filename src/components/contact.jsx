@@ -4,7 +4,6 @@ import instagram from './instagram.png';
 import whatsapp from './whatsapp.png';
 import gmail from './search.png';
 
-// Use <a> for external links instead of <Link> from react-router
 function Contact() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[40vh] bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl shadow-lg p-8">
