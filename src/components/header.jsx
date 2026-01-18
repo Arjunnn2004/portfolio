@@ -10,25 +10,75 @@ function Header({ currentTheme, setCurrentTheme }) {
   const isDark = currentTheme === 'dark';
 
   return (
-    <div className={`flex items-center justify-between p-4 shadow-md transition-colors duration-500 ${isDark ? 'bg-slate-900' : 'bg-gray-100'}`}>
-      <div className="flex items-center space-x-4">
-        <Link to="/"><img src={Logo} alt="Logo" className="h-24 w-24 mx-auto transition-all duration-500" /></Link>
+    <header className="sticky top-0 z-50">
+      <div
+        className={`mx-3 mt-3 rounded-2xl border transition-colors duration-500 backdrop-blur-xl ${
+          isDark
+            ? 'bg-slate-950/45 border-white/10'
+            : 'bg-white/55 border-white/30'
+        }`}
+      >
+        <div className="flex items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-3">
+            <Link to="/">
+              <img
+                src={Logo}
+                alt="Logo"
+                className="h-14 w-14 rounded-xl ring-1 ring-white/15 shadow-2xl shadow-black/30"
+              />
+            </Link>
+            <div className="hidden sm:block">
+              <div className={`text-sm tracking-widest uppercase ${isDark ? 'text-white/70' : 'text-slate-700'}`}>
+                Arjun
+              </div>
+              <div className={`text-xs ${isDark ? 'text-white/50' : 'text-slate-600'}`}>
+                Building modern web experiences
+              </div>
+            </div>
+          </div>
+
+          <nav className="flex items-center gap-6">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `${
+                  isDark ? 'text-white/80' : 'text-slate-800'
+                } hover:text-white transition-colors duration-300 ${
+                  isActive ? 'font-semibold' : ''
+                }`
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `${
+                  isDark ? 'text-white/80' : 'text-slate-800'
+                } hover:text-white transition-colors duration-300 ${
+                  isActive ? 'font-semibold' : ''
+                }`
+              }
+            >
+              Contact
+            </NavLink>
+
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                id="Toggle"
+                type="checkbox"
+                checked={isDark}
+                onChange={changeTheme}
+                className="sr-only peer"
+              />
+              <div className="relative w-12 h-7 bg-white/20 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-cyan-300/30 rounded-full peer-checked:bg-cyan-500/40 ring-1 ring-white/15 transition-colors duration-500">
+                <div className="absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow-md transition-transform duration-500 peer-checked:translate-x-5" />
+              </div>
+            </label>
+          </nav>
+        </div>
       </div>
-      <nav className="space-x-4">
-        <NavLink to="/" className={`hover:text-gray-600 transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-800'}`}>Home</NavLink>
-        <NavLink to="/contact" className={`hover:text-gray-600 transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-800'}`}>Contact</NavLink>
-        <label className="inline-flex items-center cursor-pointer">
-          <input
-            id="Toggle"
-            type="checkbox"
-            checked={isDark}
-            onChange={changeTheme}
-            className="sr-only peer"
-          />
-          <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600 m-6 transition-colors duration-500"></div>
-        </label>
-      </nav>
-    </div>
+    </header>
   );
 }
 

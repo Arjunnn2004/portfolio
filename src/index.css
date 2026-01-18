@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+:root {
+	color-scheme: dark;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+body {
+	font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+		sans-serif;
+}
+
+/* Reusable 3D / glass styles */
+.glass-panel {
+	background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.14),
+			rgba(255, 255, 255, 0.06)
+		);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+	backdrop-filter: blur(18px);
+}
+
+.tilt-hover {
+	transform-style: preserve-3d;
+	transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.tilt-hover:hover {
+	transform: perspective(1100px) rotateX(6deg) rotateY(-8deg) translateY(-4px);
+	box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55);
+}
+
+@media (hover: none) {
+	.tilt-hover:hover {
+		transform: none;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+	}
+}
+
+.text-3d {
+	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 14px 40px rgba(0, 0, 0, 0.55);
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-up {
+	animation: fadeUp 320ms ease both;
+}
+
+/* Make the Spline canvas behave inside rounded containers */
+.spline-wrap canvas {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+/* 3D portrait styles */
+.portrait-stage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 14px;
+}
+
+.portrait-frame {
+	position: relative;
+	width: min(420px, 92vw);
+	aspect-ratio: 3 / 4;
+	border-radius: 28px;
+	padding: 18px;
+	background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+	overflow: hidden;
+}
+
+.app-shell {
+	background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+	.app-shell {
+		background-attachment: scroll;
+	}
+
+	.portrait-frame {
+		width: min(360px, 92vw);
+		aspect-ratio: 4 / 5;
+		padding: 14px;
+	}
+
+	.portrait-ring {
+		inset: 10px;
+	}
+}
+
+.portrait-glow {
+	position: absolute;
+	inset: -30% 20% auto auto;
+	width: 70%;
+	height: 70%;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 70%);
+	filter: blur(10px);
+	pointer-events: none;
+}
+
+.portrait-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	overflow: hidden;
+	background: linear-gradient(180deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9));
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.portrait-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transform: scale(1.03) translateZ(20px);
+	filter: contrast(1.05) saturate(1.1);
+}
+
+.portrait-ring {
+	position: absolute;
+	inset: 12px;
+	border-radius: 22px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05);
+	pointer-events: none;
+}
+
+.portrait-caption {
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+/* Better defaults for tap/click */
+button,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
