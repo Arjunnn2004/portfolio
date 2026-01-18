@@ -45,7 +45,7 @@ function App() {
           <Button value={`Projects`} link="https://github.com/arjunnn2004" />
           <Button
             value={`My Resume`}
-            link="https://drive.google.com/file/d/1dQ_LKtkygSlnDbTCWF6QXlHKuMhgGEp7/view?usp=sharing"
+            link="https://drive.google.com/file/d/17Ip5t5BKauPz8xHg_wwj5Fu0NVFqMl74/view?usp=sharing"
           />
         </div>
       </div>
